@@ -1,0 +1,1 @@
+{"ast":null,"code":"export class Album {\n  constructor(title, description, year, image, artist) {\n    this.title = title;\n    this.description = description;\n    this.year = year;\n    this.image = image;\n    this.artist = artist;\n  }\n\n}","map":null,"metadata":{},"sourceType":"module"}

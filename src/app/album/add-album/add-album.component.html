@@ -1,0 +1,53 @@
+<div class="container">
+  <h1>Add an album!</h1>
+  <div class="row">
+    <form [formGroup]="myForm" class="col-md-6" (ngSubmit)="onSubmit()">
+      <p>
+        <label>Title</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="title"
+          required
+        />
+        <!-- <span *ngIf="!name.valid && name.touched">The name can not be blank </span> -->
+      </p>
+      <p>
+        <label>Description</label>
+        <textarea
+          class="form-control"
+          formControlName="description"
+          required
+        ></textarea>
+        <!-- <span *ngIf="!description.valid && description.touched">The description can not be blank </span>     -->
+      </p>
+      <p>
+        <label>Year</label>
+        <select
+          class="form-select form-select-lg mb-3"
+          aria-label=".form-select-lg example"
+          formControlName="year"
+          (change)="entradaYear($event)"
+          style="width: 150px"
+          [ngModel]="actualYear"
+          required
+        >
+          <option *ngFor="let anno of annos.reverse()" [value]="anno">
+            {{ anno }}
+          </option>
+        </select>
+        <!-- <span *ngIf="!name.valid && name.touched">The name can not be blank </span> -->
+      </p>
+
+      <input
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="myForm.invalid"
+        value="Send"
+      />
+    </form>
+    <div class="col-md-5" style="margin-left: 3.5em">
+      <img src="../../assets/5046975.png" />
+    </div>
+  </div>
+</div>

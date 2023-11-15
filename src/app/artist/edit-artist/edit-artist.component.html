@@ -1,0 +1,41 @@
+<div *ngIf="artist" class="container">
+  <h1>{{ title }}</h1>
+  <div class="row">
+    <form [formGroup]="myForm" class="col-md-6" (ngSubmit)="onSubmit()">
+      <p>
+        <label>Name</label>
+        <input
+          type="text"
+          class="form-control"
+          [ngModel]="artist.artist.name"
+          formControlName="name"
+          required
+        />
+        <!-- <span *ngIf="!name.valid && name.touched">The name can not be blank </span> -->
+      </p>
+      <p>
+        <label>Description</label>
+        <textarea
+          class="form-control"
+          formControlName="description"
+          [ngModel]="artist.artist.description"
+          required
+        ></textarea>
+        <!-- <span *ngIf="!description.valid && description.touched">The description can not be blank </span>     -->
+      </p>
+      <p class="form-group">
+        <label>Image</label>
+        <input type="file" class="form-control" formControlName="image" (change)="fileChangeEvent($event)">
+      </p>
+      <input
+        type="submit"
+        class="btn btn-primary"
+        value="Send"
+        [disabled]="myForm.invalid"
+      />
+    </form>
+    <div class="col-md-5" id="artistImage">
+      <img src="{{url+'/artist/image/'+artist.artist.image}}" >
+    </div>
+  </div>
+</div>

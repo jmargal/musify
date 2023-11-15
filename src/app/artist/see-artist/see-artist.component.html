@@ -1,0 +1,24 @@
+<div *ngIf="artist" class="container">
+    <h1>{{artist.artist.name}}</h1>
+    <img *ngIf="artist.artist.image" src="{{url+'/artist/image/'+artist.artist.image}}" style="border-radius: 20px;margin: 0.5em;" >
+
+    <h4>{{artist.artist.description}}</h4>
+    
+    <h2>Album list of {{artist.artist.name}}</h2>
+    <div class="deck">
+      <div class="card carta" *ngFor="let album of albums" style="width: 17rem;">
+        <img *ngIf="album.image != ''" class="card-img-top" src="{{url+'/album/image/'+album.image}}">
+        <img *ngIf="album.image == ''" class="card-img-top" src="{{ url + '/album/image/L5XAMzeZJd28RisrgVA5J4MV.jpg' }}"/>
+        <h4 style="margin: 0.3em;">{{album.title}}</h4>
+        <div class="card-body">
+          <a><button class="btn btn-success" (click)="goAlbum(album._id)">
+            See album
+          </button></a>
+        </div>
+      </div>
+    </div>
+    <div id="botones">
+      <button *ngIf="identity.role==='ROLE_ADMIN'" class="btn btn-success" (click)="addAlbum()">Add album</button>
+      <button class="btn btn-primary" routerLink="/list/{{page}}">Go back</button>
+    </div>
+</div>

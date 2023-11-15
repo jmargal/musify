@@ -1,0 +1,60 @@
+.login-register-container {
+  display: flex;
+}
+
+.login-form,
+.register-form {
+  flex-basis: 50%;
+  padding: 20px;
+}
+
+.login-form {
+  border-right: 1px solid #ccc;
+}
+
+.button-container {
+  display: flex;
+  gap: 10px;
+}
+
+.navigation a {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  margin: 1em;
+}
+
+.navigation a:hover {
+  color: rgb(64, 105, 199);
+  text-decoration: none;
+}
+
+.navigation {
+  width: 20%;
+  background-color: rgb(12, 12, 12);
+  color: white;
+}
+
+#user {
+  margin:1em;
+  position: absolute;
+  border-top: 1px solid;
+  bottom: 0;
+}
+
+img{
+  border-radius: 45px;
+  height: 55px;
+  width: 55px;
+  margin-top: 15px;
+}
+
+.actived{
+  border-left: 2px solid white;
+  padding: 0.3em;
+}
+
+#contenido{
+  float: right;
+  margin-left: 2.5em;
+  margin-top: 2em;
+}

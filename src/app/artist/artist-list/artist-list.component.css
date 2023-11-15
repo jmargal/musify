@@ -1,0 +1,22 @@
+#addArtist {
+  margin: 0.5em;
+}
+
+img {
+  height: 400px;
+}
+
+p {
+  font-size: large;
+}
+
+li {
+  margin: 0.5em;
+}
+#paginar {
+  float: right;
+}
+
+#paginar ul {
+  float: right;
+}

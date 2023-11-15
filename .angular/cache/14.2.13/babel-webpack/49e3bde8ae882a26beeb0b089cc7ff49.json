@@ -1,0 +1,1 @@
+{"ast":null,"code":"export class Artist {\n  constructor(name, description, image) {\n    this.name = name;\n    this.description = description;\n    this.image = image;\n  }\n\n}","map":null,"metadata":{},"sourceType":"module"}

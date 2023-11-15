@@ -1,0 +1,1 @@
+{"ast":null,"code":"export class Song {\n  constructor(number, name, duration, file, album) {\n    this.number = number;\n    this.name = name;\n    this.duration = duration;\n    this.file = file;\n    this.album = album;\n  }\n\n}","map":null,"metadata":{},"sourceType":"module"}

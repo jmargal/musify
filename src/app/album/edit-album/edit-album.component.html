@@ -1,0 +1,81 @@
+<div *ngIf="album && actualArtist" class="container">
+  <h1>{{ title }}</h1>
+  <div class="row">
+    <form [formGroup]="myForm" class="col-md-6" (ngSubmit)="onSubmit()">
+      <p>
+        <label>Title</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="title"
+          [ngModel]="album.title"
+          required
+        />
+        <span class="form-text text-danger" *ngIf="isValidName()">The title is not valid </span>
+      </p>
+      <p>
+        <label>Description</label>
+        <textarea
+          class="form-control"
+          formControlName="description"
+          [ngModel]="album.description"
+          required
+        ></textarea>
+        <span class="form-text text-danger" *ngIf="validDescription()">The description is not valid </span>    
+      </p>
+      <p>
+        <label>Year</label>
+        <select
+          class="form-select form-select-lg mb-3"
+          aria-label=".form-select-lg example"
+          formControlName="year"
+          (change)="entradaYear($event)"
+          style="width: 150px"
+          [ngModel]="album.year"
+          required
+        >
+          <option *ngFor="let anno of annos.reverse()" [value]="anno">
+            {{ anno }}
+          </option>
+        </select>
+      </p>
+      <p>
+        <label>Artist</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="artist"
+          [ngModel]="nameArtist"
+          required
+        />
+        <span class="form-text text-danger" *ngIf="isArtistValid()">Introduce an existing artist </span>
+      </p>
+
+      <p class="form-group">
+        <label>Image</label>
+        <input
+          type="file"
+          class="form-control"
+          formControlName="image"
+          (change)="fileChangeEvent($event)"
+        />
+      </p>
+      <input
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="myForm.invalid"
+        value="Send"
+      />
+    </form>
+    <div class="col-md-5" id="albumImage">
+      <img
+        *ngIf="album.image != ''"
+        src="{{ url + '/album/image/' + album.image }}"
+      />
+      <img
+        *ngIf="album.image == ''"
+        src="{{ url + '/album/image/L5XAMzeZJd28RisrgVA5J4MV.jpg' }}"
+      />
+    </div>
+  </div>
+</div>

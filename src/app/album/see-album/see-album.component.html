@@ -1,0 +1,15 @@
+<div class="container" *ngIf="album">
+  <h1>{{ album.title }}</h1>
+  <h3>{{ album.description }}</h3>
+  <h4>Album released on {{ album.year }}</h4>
+
+  <div class="centrado">
+    <img src="{{ url + '/album/image/' + album.image }}" />
+  </div>
+  <div id="botones">
+    <a><button class="btn btn-warning" (click)="editAlbum(id)">Edit album</button></a>
+    <a><button class="btn btn-primary" (click)="goBack()">Go back</button></a>
+    <a><button class="btn btn-success" (click)="addSong()">Add song</button></a>
+  </div>
+  
+</div>

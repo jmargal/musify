@@ -1,0 +1,11 @@
+.card {
+  margin: 0.5em;
+  margin-right: 0.8em;
+  float: left;
+}
+#botones *{
+  margin: 0.5em;
+}
+#botones{
+  clear: both;
+}

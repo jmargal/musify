@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="card" *ngFor="let album of albums" style="width: 15rem">
+    <img
+      class="card-img-top"
+      src="{{ url + '/album/image/' + album.image }}"
+    />
+    <div class="card-body">
+      <h5 class="card-text">{{ album.title }}</h5>
+      <h6 class="card-text">{{ album.artist.name }}</h6>
+      <hr>
+      <a
+        ><button class="btn btn-success" (click)="goAlbum(album._id)">
+          See album
+        </button></a
+      >
+    </div>
+  </div>
+</div>

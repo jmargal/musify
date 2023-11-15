@@ -1,0 +1,32 @@
+<div *ngIf="song && charged" class="container">
+  <h1>Edit "{{ song.name }}"</h1>
+
+  <form [formGroup]="myForm" class="col-md-6" (ngSubmit)="onSubmit()">
+    <p>
+      <label>Name</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="name"
+        [ngModel]="song.name"
+        required
+      /><span class="form-text text-danger" *ngIf="isValidName()"
+        >The title is not valid
+      </span>
+    </p>
+    <p class="form-group">
+      <label>Audio</label>
+      <input
+        type="file"
+        class="form-control"
+        (change)="fileChangeEvent($event)"
+      />
+    </p>
+    <input
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="myForm.invalid"
+      value="Send"
+    />
+  </form>
+</div>

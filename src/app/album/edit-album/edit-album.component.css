@@ -1,0 +1,9 @@
+#albumImage{
+    margin: 1.5em;
+}
+
+img{
+    width: 570px;
+    height: 590px;
+    border-radius: 40px;
+}
