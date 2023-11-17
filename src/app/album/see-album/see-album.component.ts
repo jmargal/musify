@@ -51,5 +51,10 @@ export class SeeAlbumComponent implements OnInit {
     this.router.navigate(['add-song',this.album._id]);
   }
 
+  
+  goSongs() {
+    this.router.navigate(['see-songs',this.album._id]);
+  }
+
 
 }

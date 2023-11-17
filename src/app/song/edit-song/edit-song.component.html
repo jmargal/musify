@@ -1,32 +1,39 @@
 <div *ngIf="song && charged" class="container">
-  <h1>Edit "{{ song.name }}"</h1>
-
-  <form [formGroup]="myForm" class="col-md-6" (ngSubmit)="onSubmit()">
-    <p>
-      <label>Name</label>
-      <input
-        type="text"
-        class="form-control"
-        formControlName="name"
-        [ngModel]="song.name"
-        required
-      /><span class="form-text text-danger" *ngIf="isValidName()"
-        >The title is not valid
-      </span>
-    </p>
-    <p class="form-group">
-      <label>Audio</label>
-      <input
-        type="file"
-        class="form-control"
-        (change)="fileChangeEvent($event)"
-      />
-    </p>
-    <input
-      type="submit"
-      class="btn btn-primary"
-      [disabled]="myForm.invalid"
-      value="Send"
-    />
-  </form>
+  <div class="content-wrapper">
+    <div class="form-section">
+      <h1>Edit "{{ song.name }}"</h1>
+      <form [formGroup]="myForm" class="col-md-12" (ngSubmit)="onSubmit()">
+        <p>
+          <label>Name</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="name"
+            [ngModel]="song.name"
+            required
+          /><span class="form-text text-danger" *ngIf="isValidName()">The title is not valid</span>
+        </p>
+        <p class="form-group">
+          <label>Audio</label>
+          <input
+            type="file"
+            class="form-control"
+            (change)="fileChangeEvent($event)"
+          />
+        </p>
+        <input
+          type="submit"
+          class="btn btn-success"
+          [disabled]="myForm.invalid"
+          value="Send"
+        />
+        <a><button class="btn btn-primary" (click)="goBack()">Go back</button></a>
+      </form>
+    </div>
+    <div class="image-section">
+      <div class="centrado">
+        <img src="{{ url + '/album/image/' + album.image }}" />
+      </div>
+    </div>
+  </div>
 </div>

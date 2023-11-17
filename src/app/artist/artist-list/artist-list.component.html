@@ -16,7 +16,7 @@
       </svg>
     </a></li>
   </ul>
-</div>
+  </div>
   <ul *ngIf="artistList" class="d-flex flex-wrap justify-content-center"> 
     <div *ngFor="let artist of artistList" class="card mb-3 col-md-8 mx-auto"> 
       <img *ngIf="artist.image!=''" class="card-img-top" src="{{url+'/artist/image/'+artist.image}}" alt="Card image cap">

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AlbumsService } from 'src/app/services/albums.service';
 import { SongService } from 'src/app/services/song.service';
 import { UserService } from 'src/app/services/user.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-song-list',
@@ -44,9 +45,23 @@ export class SongListComponent implements OnInit {
     });
   }
 
+  playSong(song){
+    const stringSong=JSON.stringify(song);
+    const filePath=environment.apiUrl+'/song/file/'+song.file;
+    console.log(song)
+    console.log(filePath)
 
+    localStorage.setItem('song', stringSong);
+    
+    document.getElementById('player').setAttribute('src', filePath);
+    (document.getElementById('player') as any).load();
+    (document.getElementById('player') as any).play();
+
+  }
   
-  
+  goEdit(id){
+    this.router.navigate(['edit-song',id])
+  }
 
 
 }

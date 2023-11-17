@@ -158,4 +158,8 @@ export class EditSongComponent implements OnInit {
       },
     });
   }
+
+  goBack(){
+    this.router.navigate(['see-songs', this.albumId]);
+  }
 }

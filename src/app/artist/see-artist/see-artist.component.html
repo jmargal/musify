@@ -1,6 +1,6 @@
 <div *ngIf="artist" class="container">
     <h1>{{artist.artist.name}}</h1>
-    <img *ngIf="artist.artist.image" src="{{url+'/artist/image/'+artist.artist.image}}" style="border-radius: 20px;margin: 0.5em;" >
+    <img *ngIf="artist.artist.image" src="{{url+'/artist/image/'+artist.artist.image}}" id="mainImg">
 
     <h4>{{artist.artist.description}}</h4>
     

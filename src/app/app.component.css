@@ -30,13 +30,13 @@
 
 .navigation {
   width: 20%;
-  background-color: rgb(12, 12, 12);
+  background-color:black;
   color: white;
 }
 
 #user {
   margin:1em;
-  position: absolute;
+  position: fixed;
   border-top: 1px solid;
   bottom: 0;
 }
@@ -57,4 +57,16 @@ img{
   float: right;
   margin-left: 2.5em;
   margin-top: 2em;
+  margin-bottom: 120px;
+}
+
+.player {
+  position: fixed;
+  bottom: 0px;
+  right: 0px; 
+  width: 1240px; 
+  height: 100px; 
+  color: aliceblue;
+  background-color: black;
+  padding: 10px;
 }

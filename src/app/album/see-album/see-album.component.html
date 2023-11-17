@@ -1,15 +1,25 @@
-<div class="container" *ngIf="album">
-  <h1>{{ album.title }}</h1>
-  <h3>{{ album.description }}</h3>
-  <h4>Album released on {{ album.year }}</h4>
+<div class="container" *ngIf="album" style="display: flex;">
+  <div style="flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
+    <div>
+      <h1>{{ album.title }}</h1>
+      <h3>{{ album.description }}</h3>
+      <h4>Album released on {{ album.year }}</h4>
+    </div>
 
-  <div class="centrado">
-    <img src="{{ url + '/album/image/' + album.image }}" />
+    
+      <div id="botones">
+        <a><button class="btn btn-warning" (click)="editAlbum(id)">Edit album</button></a>
+        <a><button class="btn btn-primary" (click)="goBack()">Go back</button></a>
+        <a><button class="btn btn-success" (click)="addSong()">Add song</button></a>
+        <a><button class="btn btn-dark" (click)="goSongs()">Songs list</button></a>
+
+      </div>
+   
   </div>
-  <div id="botones">
-    <a><button class="btn btn-warning" (click)="editAlbum(id)">Edit album</button></a>
-    <a><button class="btn btn-primary" (click)="goBack()">Go back</button></a>
-    <a><button class="btn btn-success" (click)="addSong()">Add song</button></a>
+
+  <div style="flex: 1; display: flex; justify-content: flex-end; align-items: flex-end;">
+    <div class="centrado">
+      <img src="{{ url + '/album/image/' + album.image }}" />
+    </div>
   </div>
-  
 </div>

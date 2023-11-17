@@ -200,4 +200,8 @@ export class EditAlbumComponent implements OnInit {
         
       });
   }
+
+  goBack(){
+    this.router.navigate([`see-album/${this.id}`]);
+  }
 }

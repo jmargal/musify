@@ -3,7 +3,11 @@
 }
 
 img{
-    width: 570px;
-    height: 590px;
+    width: 550px;
+    height: 450px;
     border-radius: 40px;
+}
+
+p{
+    font-size: large;
 }

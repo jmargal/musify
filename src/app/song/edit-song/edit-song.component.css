@@ -1,0 +1,53 @@
+.centrado {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+img {
+  border-radius: 12%;
+  height: 480px;
+  width: 550px;
+  margin: 1em;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.form-section {
+  flex: 1;
+  padding: 20px;
+}
+
+.image-section {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 20px;
+}
+
+.form-control {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.btn {
+  margin: 0.5em;
+  font-size: large;
+}
+
+p {
+  font-size: large;
+}

@@ -1,29 +1,38 @@
 <div class="container">
-    <div class="col-lg-6" *ngIf="identity">
-        <h1>{{title}}</h1>
-        <div>
-            <form #userUpdate="ngForm" (ngSubmit)="update()" class="col-md-10">
-                <p>
-                  <label>Name</label>
-                  <input type="text" #name="ngModel" name="name" [(ngModel)]="user.name" class="form-control" required />
-                </p>
-                <p>
-                  <label>Surname</label>
-                  <input type="text" #surname="ngModel" name="surname" [(ngModel)]="user.surname" class="form-control" required />
-                </p>
-                <p>
-                  <label>Email</label>
-                  <input type="text" #email="ngModel" name="email" [(ngModel)]="user.email" class="form-control" required />
-                </p>
-                <div class="imageForEdit" *ngIf="user.image && user.image!=null">
-                  <img src="{{url+'/user/image/'+user.image}}" style="width: 80px;margin: 10px;">
-                    <label class="form-label">Upload your image</label>
-                    <input type="file" class="form-control" placeholder="Upload file" (change)="fileChangeEvent($event)">
-                </div>
-                <br>
-                <input type="submit" value="Update" class="btn btn-primary"/>
+  <div class="row">
+      <div class="col-lg-6" *ngIf="identity">
+          <h1 style="margin-bottom: 1em;">{{title}}</h1>
+          <div>
+              <form #userUpdate="ngForm" (ngSubmit)="update()" class="col-md-10">
+                  <p>
+                      <label>Name</label>
+                      <input type="text" #name="ngModel" name="name" [(ngModel)]="user.name" class="form-control" required />
+                  </p>
+                  <p>
+                      <label>Surname</label>
+                      <input type="text" #surname="ngModel" name="surname" [(ngModel)]="user.surname" class="form-control" required />
+                  </p>
+                  <p>
+                      <label>Email</label>
+                      <input type="text" #email="ngModel" name="email" [(ngModel)]="user.email" class="form-control" required />
+                  </p><br>
+                  <input type="submit" value="Update" class="btn btn-primary"/>
               </form>
-        </div>
-        
-    </div>
+          </div>
+      </div>
+      <div class="col-lg-6">
+          <div class="d-flex flex-column align-items-center justify-content-center" *ngIf="user.image && user.image != null">
+              <!-- Imagen existente -->
+              <img src="{{url+'/user/image/'+user.image}}" style="width: 380px; margin: 10px; border-radius: 30px;" class="align-self-center">
+              <h4 class="form-label" style="margin-bottom: 20px;">Upload your image</h4>
+              <input type="file" class="form-control" placeholder="Upload file" (change)="fileChangeEvent($event)">
+          </div>
+          <div *ngIf="!user.image && user.image == null" class="d-flex flex-column align-items-center justify-content-center">
+            <!-- Imagen por defecto -->
+            <img src="../../assets/gui_user_edit_icon_158355.png" style="width: 280px; margin: 10px;" class="align-self-center">
+            <h4 class="form-label align-self-center" style="margin-bottom: 20px;">Upload your image</h4>
+            <input type="file" class="form-control" placeholder="Upload file" (change)="fileChangeEvent($event)">
+        </div>        
+      </div>
+  </div>
 </div>

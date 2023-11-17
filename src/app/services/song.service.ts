@@ -32,5 +32,10 @@ export class SongService {
     return this.http.get(`${environment.apiUrl}/songs/album/${id}`, {headers: headers});
   }
 
+  getSongFile(id:string){
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json'});
+    headers.append('Accept', 'audio/mpeg');
+    return this.http.get(`${environment.apiUrl}/song/file/${id}`, {headers: headers,responseType: 'blob'});
+  }
 
 }

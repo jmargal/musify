@@ -2,3 +2,7 @@ li{
     font-size: x-large;
     font-weight: bold
 }
+
+button{
+    margin: 0.5em;
+}

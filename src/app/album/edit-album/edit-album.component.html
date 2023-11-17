@@ -62,10 +62,12 @@
       </p>
       <input
         type="submit"
-        class="btn btn-primary"
+        class="btn btn-success"
         [disabled]="myForm.invalid"
         value="Send"
+        style="font-size: large;"
       />
+      <a><button class="btn btn-primary" style="margin-left: 0.5em;font-size: large;" (click)="goBack()">Go back</button></a>
     </form>
     <div class="col-md-5" id="albumImage">
       <img

@@ -1,17 +1,21 @@
-.centrado{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-img{
-    border-radius: 12%;
-    height: 450px;
-    width: 450px;
-    margin: 1em;
+.centrado {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-#botones a{
+img {
+  border-radius: 12%;
+  height: 450px;
+  width: 550px;
+  margin: 1em;
+}
+
+#botones a {
   margin: 0.8em;
 }
-  
+
+#botones button {
+  margin-top: 22.5em;
+  font-size: large;
+}

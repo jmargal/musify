@@ -17,9 +17,10 @@ import { AlbumListComponent } from './album/album-list/album-list.component';
 import { AddSongComponent } from './song/add-song/add-song.component';
 import { EditSongComponent } from './song/edit-song/edit-song.component';
 import { SongListComponent } from './song/song-list/song-list.component';
+import { PlayerComponent } from './player/player.component';
 
 @NgModule({
-  declarations: [AppComponent, UserEditComponent, ArtistListComponent, HomeComponent, AddArtistComponent, EditArtistComponent, SeeArtistComponent, AddAlbumComponent, EditAlbumComponent, SeeAlbumComponent, AlbumListComponent, AddSongComponent, EditSongComponent, SongListComponent],
+  declarations: [AppComponent, UserEditComponent, ArtistListComponent, HomeComponent, AddArtistComponent, EditArtistComponent, SeeArtistComponent, AddAlbumComponent, EditAlbumComponent, SeeAlbumComponent, AlbumListComponent, AddSongComponent, EditSongComponent, SongListComponent, PlayerComponent],
   imports: [BrowserModule, FormsModule, HttpClientModule, AppRoutingModule,ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
