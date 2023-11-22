@@ -1,21 +1,21 @@
 <div *ngIf="artistList" class="container">
   <h1>{{ title }}</h1>
-  <div>
+  <div class="actions">
     <button id="addArtist" *ngIf="identity && identity.role==='ROLE_ADMIN'" class="btn btn-success" (click)="goAddArtist()">Add artist</button>
-  </div>
-  <div id="paginar" class="col-md-12">
-  <ul class="pagination">
-    <li><a *ngIf="actualPage > 1" (click)="changePage('prev')">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
-        <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
-      </svg>
-    </a></li>
-    <li><a *ngIf="block!=true" (click)="changePage('next')">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
-        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
-      </svg>
-    </a></li>
-  </ul>
+    <div id="paginar" class="col-md-12">
+      <ul class="pagination">
+        <li><a *ngIf="actualPage > 1" (click)="changePage('prev')">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+          </svg>
+        </a></li>
+        <li><a *ngIf="block!=true" (click)="changePage('next')">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+          </svg>
+        </a></li>
+      </ul>
+      </div>
   </div>
   <ul *ngIf="artistList" class="d-flex flex-wrap justify-content-center"> 
     <div *ngFor="let artist of artistList" class="card mb-3 col-md-8 mx-auto"> 
@@ -25,8 +25,8 @@
         <h4 class="card-title">{{artist.name}}</h4>
         <p class="card-text">{{artist.description}}</p>
         <button *ngIf="identity" class="btn btn-secondary" (click)="seeArtist(artist._id)" style="margin-right: 0.3em;">See artist</button>
-        <button *ngIf="identity && identity.role==='ROLE_ADMIN'" class="btn btn-warning" (click)="goEditArtist(artist._id,artist.name)" style="margin-right: 0.3em;">Edit artist</button>
-        <button *ngIf="identity && identity.role==='ROLE_ADMIN'" class="btn btn-danger" (click)="deleteArtist(artist._id)">Delete artist</button>
+        <button *ngIf="identity && identity.role==='ROLE_ADMIN'" class="btn btn-warning" (click)="goEditArtist(artist._id)" style="margin-right: 0.3em;">Edit artist</button>
+        <button *ngIf="identity && identity.role==='ROLE_ADMIN'" class="btn btn-danger" (click)="deleteArtist(artist._id,artist.name)">Delete artist</button>
       </div>
     </div>
   </ul>

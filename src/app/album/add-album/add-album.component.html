@@ -10,7 +10,7 @@
           formControlName="title"
           required
         />
-        <!-- <span *ngIf="!name.valid && name.touched">The name can not be blank </span> -->
+        <span class="form-text text-danger" *ngIf="isValidName()">The name can not be blank </span>
       </p>
       <p>
         <label>Description</label>
@@ -19,7 +19,7 @@
           formControlName="description"
           required
         ></textarea>
-        <!-- <span *ngIf="!description.valid && description.touched">The description can not be blank </span>     -->
+        <span class="form-text text-danger" *ngIf="validDescription()">The description can not be blank </span>
       </p>
       <p>
         <label>Year</label>
@@ -36,15 +36,15 @@
             {{ anno }}
           </option>
         </select>
-        <!-- <span *ngIf="!name.valid && name.touched">The name can not be blank </span> -->
       </p>
 
       <input
         type="submit"
-        class="btn btn-primary"
+        class="btn btn-success"
         [disabled]="myForm.invalid"
         value="Send"
       />
+      <a><button class="btn btn-primary" style="margin: 0.5em;" (click)="goBack()">Go back</button></a>
     </form>
     <div class="col-md-5" style="margin-left: 3.5em">
       <img src="../../assets/5046975.png" />

@@ -3,6 +3,7 @@ import { Artist } from '../../models/artist';
 import { ArtistService } from '../../services/artist.service';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-artist',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class AddArtistComponent implements OnInit {
 
-  public title: string='Add artist';
+  public title: string='Add an artist';
   public artist:Artist;
 
 
@@ -26,6 +27,11 @@ export class AddArtistComponent implements OnInit {
     const token=this.userSvc.getToken();
     this.svc.addArtist(token,this.artist).subscribe({
       next:(resp)=>{
+        Swal.fire({
+          icon: 'success',
+          title: 'Success!',
+          text: 'Artist created successfully',
+        })
         this.router.navigate(['list/1']);
       },
       error:(err)=>{

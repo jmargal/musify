@@ -34,7 +34,7 @@ export class EditArtistComponent implements OnInit {
 
   myForm: FormGroup = this.formbuilder.group({
     name: ['', [Validators.required, Validators.minLength(3)]],
-    description: ['', [Validators.required, Validators.min(3)]],
+    description: ['', [Validators.required, Validators.min(5)]],
     image: [null]
   });
 
@@ -52,7 +52,7 @@ export class EditArtistComponent implements OnInit {
   }
 
   isImageFile(file: File | undefined): boolean {
-    const allowedExtensions = ['jpg', 'jpeg', 'png'];
+    const allowedExtensions = ['jpg', 'jpeg', 'png','webp'];
     const fileExtension = file?.name.split('.').pop()?.toLowerCase();
     return (fileExtension !== undefined && allowedExtensions.includes(fileExtension));
   }
@@ -60,9 +60,23 @@ export class EditArtistComponent implements OnInit {
   fileChangeEvent(file:any){
     this.filesToUpload=<Array<File>>file.target.files;
   }
+
+  isValidName(){
+    return this.myForm?.controls['name'].touched && this.myForm?.controls['name'].errors ;
+  }
+
+  isValidDescription() {
+    const descriptionControl = this.myForm?.controls['description'];  
+    return descriptionControl?.touched && (
+      descriptionControl.errors ||
+      (descriptionControl.value && descriptionControl.value.trim() === '' && descriptionControl.value.includes('\n'))
+    );
+  }
+  
+  
   
 
-  makeFileRequest(url: string, params: Array<string>, files: Array<File>) {
+  makeFileRequest(url: string, files: Array<File>) {
     return new Promise((resolve, reject) => {
       const formData: any = new FormData();
       const xhr = new XMLHttpRequest();
@@ -80,7 +94,6 @@ export class EditArtistComponent implements OnInit {
           }
         }
       };
-  
       xhr.open('POST', url, true);
       xhr.setRequestHeader('Authorization', this.token);
       xhr.send(formData);
@@ -90,19 +103,19 @@ export class EditArtistComponent implements OnInit {
   onSubmit(){
     let name = this.myForm?.controls['name'].value;
     let description = this.myForm?.controls['description'].value;
-    let img = this.image;
-    if (img && !this.isImageFile(img)) {
+    let img = this.filesToUpload[0];
+    if (img!=null && !this.isImageFile(img)) {
       Swal.fire({
         icon: 'error',
         title: 'Invalid Image',
         text: 'Please select a valid image file.',
       });
     }else{
-      const editArtist=new Artist(name,description,img)
+      const editArtist=new Artist(name,description,'')
       this.svc.editArtist(this.token,this.id,editArtist).subscribe({
         next: (resp) => {
           if(this.filesToUpload!=null){
-            this.makeFileRequest(environment.apiUrl+'/artist/image/'+this.artist.artist._id,[],this.filesToUpload).then(
+            this.makeFileRequest(environment.apiUrl+'/artist/image/'+this.artist.artist._id,this.filesToUpload).then(
               (result:any)=>{
                 this.artist.artist.image=result.image;
               }
@@ -126,5 +139,9 @@ export class EditArtistComponent implements OnInit {
           },
       })
     }
+  }
+
+  goBack(){
+    this.router.navigate([`list`,1]);
   }
 }

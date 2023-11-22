@@ -11,7 +11,7 @@
           formControlName="name"
           required
         />
-        <!-- <span *ngIf="!name.valid && name.touched">The name can not be blank </span> -->
+        <span *ngIf="isValidName()" class="form-text text-danger">The name can not be blank (min 3 char)</span>
       </p>
       <p>
         <label>Description</label>
@@ -21,7 +21,7 @@
           [ngModel]="artist.artist.description"
           required
         ></textarea>
-        <!-- <span *ngIf="!description.valid && description.touched">The description can not be blank </span>     -->
+        <span *ngIf="isValidDescription()" class="form-text text-danger" >The description can not be blank </span>    
       </p>
       <p class="form-group">
         <label>Image</label>
@@ -29,13 +29,17 @@
       </p>
       <input
         type="submit"
-        class="btn btn-primary"
+        class="btn btn-success"
         value="Send"
         [disabled]="myForm.invalid"
       />
+      <a><button class="btn btn-primary" (click)="goBack()">Go back</button></a>
     </form>
-    <div class="col-md-5" id="artistImage">
+    <div *ngIf="artist.artist.image" class="col-md-5" id="artistImage">
       <img src="{{url+'/artist/image/'+artist.artist.image}}" >
+    </div>
+    <div *ngIf="!artist.artist.image" class="col-md-5" id="artistImage">
+      <img src="{{url+'/artist/image/IXc8_IwnlB4XBS7ASs1pX8bS.jpg'}}" >
     </div>
   </div>
 </div>

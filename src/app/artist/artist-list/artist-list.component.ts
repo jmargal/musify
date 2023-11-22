@@ -64,7 +64,7 @@ export class ArtistListComponent implements OnInit {
   deleteArtist(id: string, name: string) {
     Swal.fire({
       title: 'Are you sure?',
-      text: 'You are going to delete artist with id: ' + name,
+      text: 'You are going to delete artist: ' + name,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -74,7 +74,9 @@ export class ArtistListComponent implements OnInit {
       if (result.isConfirmed) {
         this.artistSvc.deleteArtist(this.token, id).subscribe({
           next: () => {
-            this.getArtistList();
+            setTimeout(() => {
+              this.getArtistList();
+            }, 200);
           },
           error: (err) => {
             console.log(err);

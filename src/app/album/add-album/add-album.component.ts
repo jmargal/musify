@@ -48,6 +48,14 @@ export class AddAlbumComponent implements OnInit {
     this.myForm.get('year').setValue(selectedYear);
   }
 
+  isValidName(){
+    return this.myForm?.controls['title'].touched && this.myForm?.controls['title'].errors;
+  }
+
+  validDescription() {
+    return this.myForm?.controls['description'].touched && this.myForm?.controls['description'].errors
+  }
+
   onSubmit() {
     let title = this.myForm.controls['title'].value;
     let description = this.myForm.controls['description'].value;
@@ -71,5 +79,9 @@ export class AddAlbumComponent implements OnInit {
         });
       },
     });
+  }
+  
+  goBack(){
+    this.router.navigate(['see-artist',this.artistId]);
   }
 }

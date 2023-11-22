@@ -38,4 +38,8 @@ export class SongService {
     return this.http.get(`${environment.apiUrl}/song/file/${id}`, {headers: headers,responseType: 'blob'});
   }
 
+  deleteSong(id:string){
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json'});
+    return this.http.delete(`${environment.apiUrl}/song/${id}`,{headers: headers});
+  }
 }

@@ -5,14 +5,14 @@
       <p>
         <label>Name</label>
         <input type="text" #name="ngModel" name="name" class="form-control" [(ngModel)]="artist.name" required />
-        <span *ngIf="!name.valid && name.touched">The name can not be blank</span>
+        <span *ngIf="!name.valid && name.touched" class="form-text text-danger">The name can not be blank</span>
       </p>
       <p>
         <label>Description</label>
         <textarea #description="ngModel" name="description" class="form-control" [(ngModel)]="artist.description" required></textarea>
-        <span *ngIf="!description.valid && description.touched">The description can not be blank</span>    
+        <span *ngIf="!description.valid && description.touched" class="form-text text-danger">The description can not be blank</span>    
       </p>
-      <input type="submit" class="btn btn-primary" value="Send" [disabled]="!form.form.valid">
+      <input type="submit" class="btn btn-success" value="Send" [disabled]="!form.form.valid">
     </form>
     <div class="col-md-5">
       <img src="../../../assets/237d6207c72953ee593d9cfb2e66aebc-cantante-cantando-silueta.png" style="width: 95%;">

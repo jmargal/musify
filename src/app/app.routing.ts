@@ -34,6 +34,8 @@ const appRoutes: Routes = [
   { path: 'edit', component: UserEditComponent },
 
   { path: 'list/:page', component: ArtistListComponent },
+  { path: 'list', redirectTo: 'list/1', pathMatch: 'full' },
+
   { path: 'album-list', component: AlbumListComponent },
   { path: '**', component: HomeComponent },
 ];

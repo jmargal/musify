@@ -134,23 +134,22 @@ export class AddSongComponent implements OnInit {
     const number = this.myForm?.controls['number'].value;
     const duration = this.myForm?.controls['duration'].value;
     const song = new Song(number, name, duration, null, this.idAlbum);
-    const isAudio=this.isAudioFile();
     let show=false;
     this.songSvc.addSong(this.token, song).subscribe({
       next: (resp: any) => {
-        if (this.filesToUpload != null && isAudio) {
+        if (this.filesToUpload!=undefined && this.isAudioFile()) {
+          show=true;
           this.makeFileRequest(
             environment.apiUrl + '/song/file/' + resp.song._id,
             [],
             this.filesToUpload
-          ).then(()=>{
-            show=true;
-          })
-        }else{
+          )
+        }
+        else{
           Swal.fire({
             icon: 'error',
             title: 'Ooops...',
-            text: 'Extension not valid, the song has beed added without file',
+            text: 'Extension not valid or empty audio, the song has beed added without file',
           });
           this.router.navigate(['see-album', this.idAlbum]);
         }
@@ -171,5 +170,9 @@ export class AddSongComponent implements OnInit {
         });
       },
     });
+  }
+
+  goBack(){
+    this.router.navigate(['see-album', this.idAlbum])
   }
 }

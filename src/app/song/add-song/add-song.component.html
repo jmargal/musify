@@ -1,48 +1,65 @@
 <div *ngIf="album && charged" class="container">
-  <h2>{{ album.title }}</h2>
-  <form [formGroup]="myForm" class="col-md-6" (ngSubmit)="onSubmit()">
-    <p>
-      <label>Name</label>
-      <input
-        type="text" 
-        class="form-control" 
-        formControlName="name" 
-        required />
-    </p>
-    <span class="form-text text-danger" *ngIf="isValidName()">The name is not valid </span>
-    <p>
-      <label>Duration</label>
-      <input
-        type="text"
-        class="form-control"
-        formControlName="duration"
-        required
-      />
-    </p>
-    <span class="form-text text-danger" *ngIf="isValidDuration()">The duration format must be like "3:14" </span>    
-    <p>
-      <label>Number</label>
-      <input
-        type="number"
-        class="form-control"
-        formControlName="number"
-        required
-      />
-    <span class="form-text text-danger" *ngIf="isValidNumber()">The number is not valid  or already exists a song with this number in this album</span>
-    </p>
-    <p class="form-group">
-        <label>Audio file</label>
+  <div class="row">
+    <div class="col-md-7">
+      <form [formGroup]="myForm" class="col-md-12" (ngSubmit)="onSubmit()">
+        <h1>{{ album.title }}</h1>
+        <p>
+          <label>Name</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="name"
+            required
+          />
+        </p>
+        <span class="form-text text-danger" *ngIf="isValidName()"
+          >The name is not valid
+        </span>
+        <p>
+          <label>Duration</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="duration"
+            required
+          />
+        </p>
+        <span class="form-text text-danger" *ngIf="isValidDuration()"
+          >The duration format must be like "3:14"
+        </span>
+        <p>
+          <label>Number</label>
+          <input
+            min="0"
+            type="number"
+            class="form-control"
+            formControlName="number"
+            required
+          />
+          <span class="form-text text-danger" *ngIf="isValidNumber()"
+            >The number is not valid or already exists a song with this number
+            in this album</span
+          >
+        </p>
+        <p class="form-group">
+          <label>Audio file</label>
+          <input
+            type="file"
+            class="form-control"
+            (change)="fileChangeEvent($event)"
+          />
+        </p>
         <input
-          type="file"
-          class="form-control"
-          (change)="fileChangeEvent($event)"
+          type="submit"
+          [disabled]="myForm.invalid"
+          class="btn btn-success"
+          value="Send"
         />
-    </p>
-    <input
-      type="submit"
-      [disabled]="myForm.invalid"
-      class="btn btn-primary"
-      value="Send"
-    />
-  </form>
+        <button class="btn btn-primary" (click)="goBack()">Go back</button>
+      </form>
+    </div>
+    <div class="col-md-5 img">
+      <img src="../../../assets/track.png" class="img-fluid" />
+    </div>
+  </div>
 </div>
