@@ -103,18 +103,22 @@ export class EditArtistComponent implements OnInit {
   onSubmit(){
     let name = this.myForm?.controls['name'].value;
     let description = this.myForm?.controls['description'].value;
-    let img = this.filesToUpload[0];
-    if (img!=null && !this.isImageFile(img)) {
+    if (this.filesToUpload!=undefined && !this.isImageFile(this.filesToUpload[0])) {
       Swal.fire({
         icon: 'error',
         title: 'Invalid Image',
         text: 'Please select a valid image file.',
       });
     }else{
-      const editArtist=new Artist(name,description,'')
+      let editArtist;
+      if(this.filesToUpload==undefined){
+        editArtist=new Artist(name,description,this.artist.artist.image)
+      }else{
+        editArtist=new Artist(name,description,'')
+      }
       this.svc.editArtist(this.token,this.id,editArtist).subscribe({
         next: (resp) => {
-          if(this.filesToUpload!=null){
+          if(this.filesToUpload!=undefined){
             this.makeFileRequest(environment.apiUrl+'/artist/image/'+this.artist.artist._id,this.filesToUpload).then(
               (result:any)=>{
                 this.artist.artist.image=result.image;

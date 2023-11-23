@@ -19,3 +19,7 @@ li {
   margin: 0.3em;
   font-size: large;
 }
+
+* .actions{
+  float: left;
+}

@@ -23,7 +23,7 @@
       <div class="col-lg-6">
           <div class="d-flex flex-column align-items-center justify-content-center" *ngIf="user.image && user.image != null">
               <!-- Imagen existente -->
-              <img src="{{url+'/user/image/'+user.image}}" style="width: 380px; margin: 10px; border-radius: 30px;" class="align-self-center">
+              <img src="{{url+'/user/image/'+user.image}}" style="width: 420px; margin: 10px; border-radius: 30px;" class="align-self-center">
               <h4 class="form-label" style="margin-bottom: 20px;">Upload your image</h4>
               <input type="file" class="form-control" placeholder="Upload file" (change)="fileChangeEvent($event)">
           </div>

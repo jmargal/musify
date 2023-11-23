@@ -1,9 +1,11 @@
 <div class="container">
   <div class="card" *ngFor="let album of albums" style="width: 15rem">
-    <img
+    <img *ngIf="album.image"
       class="card-img-top"
       src="{{ url + '/album/image/' + album.image }}"
     />
+    <img *ngIf="!album.image" src="../../../assets/pngimg.com - compact_disc_PNG102166.png"/>
+
     <div class="card-body">
       <h5 class="card-text">{{ album.title }}</h5>
       <h6 class="card-text">{{ album.artist.name }}</h6>

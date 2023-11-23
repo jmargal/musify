@@ -1,8 +1,9 @@
 <div *ngIf="artist" class="container">
     <h1>{{artist.artist.name}}</h1>
+    <h4>{{artist.artist.description}}</h4>
+
     <img *ngIf="artist.artist.image" src="{{url+'/artist/image/'+artist.artist.image}}" id="mainImg">
 
-    <h4>{{artist.artist.description}}</h4>
     
     <h2>Album list of {{artist.artist.name}}</h2>
     <div class="deck">

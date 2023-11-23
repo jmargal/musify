@@ -26,16 +26,23 @@ export class UserEditComponent implements OnInit {
     this.identity=this.userSvc.getIdentity();
     this.token = this.userSvc.getToken();
     this.user=this.identity;
+    console.log("Inicio")
+    console.log(this.user)
   }
 
   update(){
     this.userSvc.update(this.user).subscribe({
       next:(resp)=>{
+        console.log("Update")
+        console.log(resp)
         this.user=resp;
         if(this.filesToUpload!=null){
           this.makeFileRequest(environment.apiUrl+'/user/image/'+this.user.user._id,[],this.filesToUpload).then(
             (result:any)=>{
+              console.log("Segunda peticion")
+              console.log(result)
               this.user.image=result.image;
+              this.user=result.user;
               document.getElementById('image_user').setAttribute('src',environment.apiUrl+'/user/image/'+this.user.image);
             }
           )

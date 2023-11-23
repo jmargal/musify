@@ -68,7 +68,7 @@ export class AddAlbumComponent implements OnInit {
           title: 'Created!',
           text: 'Album created successfully',
         });
-        this.router.navigate(['list/1']);
+        this.router.navigate(['album-list']);
       },
       error: (err) => {
         console.log(err);

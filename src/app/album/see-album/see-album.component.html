@@ -20,7 +20,8 @@
 
   <div style="flex: 1; display: flex; justify-content: flex-end; align-items: flex-end;">
     <div class="centrado">
-      <img src="{{ url + '/album/image/' + album.image }}" />
+      <img *ngIf="album.image" src="{{ url + '/album/image/' + album.image }}" />
+      <img *ngIf="!album.image" src="../../../assets/pngimg.com - compact_disc_PNG102166.png"/>
     </div>
   </div>
 </div>

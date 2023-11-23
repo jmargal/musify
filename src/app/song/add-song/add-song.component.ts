@@ -147,7 +147,7 @@ export class AddSongComponent implements OnInit {
         }
         else{
           Swal.fire({
-            icon: 'error',
+            icon: 'warning',
             title: 'Ooops...',
             text: 'Extension not valid or empty audio, the song has beed added without file',
           });
@@ -156,7 +156,7 @@ export class AddSongComponent implements OnInit {
         if(show){
           Swal.fire({
             icon: 'success',
-            title: 'Updated!',
+            title: 'Created!',
             text: 'Song added successfully',
           });
           this.router.navigate(['see-album', this.idAlbum]);
